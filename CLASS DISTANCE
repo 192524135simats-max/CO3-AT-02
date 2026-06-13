@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+class Distance
+{
+    int meters;
+    int centimeters;
+
+public:
+    Distance(int m, int c)
+    {
+        meters = m;
+        centimeters = c;
+    }
+
+    Distance operator+(Distance d)
+    {
+        Distance temp(0, 0);
+
+        temp.meters = meters + d.meters;
+        temp.centimeters = centimeters + d.centimeters;
+
+        if (temp.centimeters >= 100)
+        {
+            temp.meters += temp.centimeters / 100;
+            temp.centimeters %= 100;
+        }
+
+        return temp;
+    }
+
+    void display()
+    {
+        cout << "Meters: " << meters << endl;
+        cout << "Centimeters: " << centimeters << endl;
+    }
+};
+
+int main()
+{
+    Distance d1(5, 80);
+    Distance d2(3, 40);
+
+    Distance d3 = d1 + d2;
+
+    cout << "First Distance:" << endl;
+    d1.display();
+
+    cout << endl;
+
+    cout << "Second Distance:" << endl;
+    d2.display();
+
+    cout << endl;
+
+    cout << "Total Distance:" << endl;
+    d3.display();
+
+    return 0;
+}
