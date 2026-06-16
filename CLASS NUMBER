@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+class Number
+{
+private:
+    int value;
+
+public:
+    // Constructor
+    Number(int v)
+    {
+        value = v;
+    }
+
+    // Overload unary - operator
+    Number operator-()
+    {
+        return Number(-value);
+    }
+
+    // Display function
+    void display()
+    {
+        cout << "Value = " << value << endl;
+    }
+};
+
+int main()
+{
+    Number n1(10);
+
+    cout << "Original value:" << endl;
+    n1.display();
+
+    Number n2 = -n1;
+
+    cout << "After applying unary - operator:" << endl;
+    n2.display();
+
+    return 0;
+}
