@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Test
+{
+public:
+    // Constructor
+    Test()
+    {
+        cout << "Constructor called" << endl;
+    }
+
+    // Destructor
+    ~Test()
+    {
+        cout << "Destructor called" << endl;
+    }
+};
+
+int main()
+{
+    cout << "Main starts" << endl;
+
+    {
+        Test obj1;
+
+        cout << "Inside first block" << endl;
+
+        {
+            Test obj2;
+
+            cout << "Inside nested block" << endl;
+        }   // obj2 is destroyed here
+
+        cout << "Back to first block" << endl;
+    }   // obj1 is destroyed here
+
+    cout << "Main ends" << endl;
+
+    return 0;
+}
