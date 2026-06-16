@@ -1,0 +1,89 @@
+1. Trace the sequence of function calls
+Step 1
+Demo d1(5);
+Constructor is called.
+
+Output:
+
+Construct
+Step 2
+Demo d2(10);
+Constructor is called.
+
+Output:
+
+Construct
+Step 3
+Demo d3 = d1 + d2;
+
+This becomes:
+
+d1.operator+(d2);
+
+Inside operator+:
+
+a)
+
+d2 is passed by value
+
+Demo operator+(Demo d)
+
+So, the copy constructor is called.
+
+Output:
+
+Copy
+b)
+
+Then,
+
+cout << "Add ";
+
+Output:
+
+Add
+c)
+return Demo(x + d.x);
+
+Creates a new object with value 15.
+
+Constructor is called.
+
+Output:
+
+Construct
+d)
+
+The parameter d goes out of scope.
+
+Destructor is called.
+
+Output:
+
+Destruct
+Step 4
+
+main() ends.
+
+Objects are destroyed in reverse order.
+
+d3 → Destructor
+d2 → Destructor
+d1 → Destructor
+
+Output:
+
+Destruct Destruct Destruct
+2. Exact Output
+Construct Construct Copy Add Construct Destruct Destruct Destruct Destruct
+3. Temporary objects created during d1 + d2
+Temporary object:
+return Demo(x + d.x);
+
+Creates:
+
+Demo(15)
+Copied object:
+Demo d
+
+is created because d2 is passed by value.
