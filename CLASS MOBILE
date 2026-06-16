@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+class Mobile
+{
+private:
+    string brand;
+    float price;
+
+public:
+    // Default constructor
+    Mobile()
+    {
+        brand = "Unknown";
+        price = 0.0;
+
+        cout << "Default constructor called" << endl;
+    }
+
+    // Parameterized constructor
+    Mobile(string b, float p)
+    {
+        brand = b;
+        price = p;
+
+        cout << "Parameterized constructor called" << endl;
+    }
+
+    // Copy constructor
+    Mobile(const Mobile &m)
+    {
+        brand = m.brand;
+        price = m.price;
+
+        cout << "Copy constructor called" << endl;
+    }
+
+    // Display function
+    void display()
+    {
+        cout << "Brand : " << brand << endl;
+        cout << "Price : " << price << endl;
+        cout << endl;
+    }
+};
+
+int main()
+{
+    // Object using default constructor
+    Mobile m1;
+
+    // Object using parameterized constructor
+    Mobile m2("Samsung", 35000);
+
+    // Object using copy constructor
+    Mobile m3(m2);
+
+    cout << "\nObject 1:" << endl;
+    m1.display();
+
+    cout << "Object 2:" << endl;
+    m2.display();
+
+    cout << "Object 3:" << endl;
+    m3.display();
+
+    return 0;
+}
